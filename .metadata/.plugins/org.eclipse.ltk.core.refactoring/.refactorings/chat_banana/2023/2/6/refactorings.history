@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;chat_banana/src/main/webapp/ajax/picture/picture copy.html&apos; to &apos;picture2.html&apos;" description="Rename resource &apos;picture copy.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/ajax/picture/picture copy.html" name="picture2.html" stamp="1675844958620" updateReferences="true"/>
+</session>
