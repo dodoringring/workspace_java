@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  <%@ page import="java.util.*" %>
+   <%@ page import="com.google.gson.Gson" %>
+    <%
+    	List<Map<String,Object>> memberList = new ArrayList<>();
+    	Map<String,Object> map=new HashMap<>();
+    	map.put("mem_id","tomato");
+    	memberList.add(map);
+    	map=new HashMap<>();
+    	map.put("mem_id","apple");
+    	memberList.add(map);
+    	map=new HashMap<>();
+    	map.put("mem_id","banana");
+    	memberList.add(map);
+    	Gson g =new Gson();
+    	String temp=g.toJson(memberList);
+    	//out.print(temp);
+    	out.print(memberList);
+    %>

@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>부서관리2</title>
+<%@ include file="../../common/easyUI_common.jsp" %>
+</head>
+<body>
+<table id="dg" toolbar="#toolbar"></table>
+<script type="text/javascript">
+window.addEventListener("load",function(event){
+	$('#dg').datagrid({
+		title:'부서관리',
+	    url:'datagrid_data.json',
+	    columns:[[
+	        {field:'deptno',title:'부서번호',width:100},
+	        {field:'dname',title:'부서명',width:100},
+	        {field:'loc',title:'지역',width:100,align:'right'}
+	    ]]
+	 
+	});
+	})
+</script>
+ <div id="toolbar">
+      <a
+        href="javascript:void(0)"
+        class="easyui-linkbutton"
+        iconCls="icon-search"
+        plain="true"
+        onclick="getDeptList()"
+        >조회</a
+      >
+      <a
+        href="javascript:void(0)"
+        class="easyui-linkbutton"
+        iconCls="icon-edit"
+        plain="true"
+        onclick="editUser()"
+        >수정</a
+      >
+      <a
+        href="javascript:void(0)"
+        class="easyui-linkbutton"
+        iconCls="icon-remove"
+        plain="true"
+        onclick="destroyUser()"
+        >삭제</a
+      >
+    </div>
+
+</body>
+</html>
