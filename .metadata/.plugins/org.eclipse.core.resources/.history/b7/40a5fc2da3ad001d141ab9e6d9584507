@@ -1,0 +1,46 @@
+package com.mvc.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
+import com.mvc.dao.TestDao;
+
+public class TestServlet extends HttpServlet {
+	/**
+	 * 객체에 대한 식별자이다. 패킷단위로 쪼개서 보내기대문에 구분 필요하다.
+	 */
+	private static final long serialVersionUID = 1L;
+	Logger logger=Logger.getLogger(TestServlet.class);
+//내가 하나 메소드 만든다. 사용자 정의 메소드. 오버라이딩 아니다.
+	public void doService(HttpServletRequest req, HttpServletResponse res)
+	throws ServletException, IOException
+	{
+		logger.info("doService 호출");
+		logger.fatal("doService 호출");
+		logger.debug("doService 호출");
+		logger.warn("doService 호출");
+		logger.error("doService 호출");
+		TestDao tDao=new TestDao();
+		String cTime=tDao.testDate();
+		logger.info("today :"+cTime);
+	}
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+	throws ServletException, IOException
+	{
+		doService(req,res);
+	}
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
+	throws ServletException, IOException
+	{
+		doService(req,res);
+	}
+	
+}

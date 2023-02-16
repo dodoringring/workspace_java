@@ -1,0 +1,35 @@
+package com.mvc.dao;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+
+import com.util.MyBatisCommonFactory;
+
+public class TestDao {
+	Logger logger=Logger.getLogger(TestDao.class);
+	MyBatisCommonFactory mcf = new MyBatisCommonFactory();
+	public String testDate() {
+		String cTime =null;
+		SqlSessionFactory ssf = null;
+		//SqlSession으로 commit과 rollback을 지원받음
+		SqlSession ss = null;
+		List<Map<String, Object>> memList = null;
+		Map<String, Object> pmap = new HashMap<>();
+		pmap.put("mem_num", 2);
+		try {
+			ssf = mcf.getSqlSessionFactory();
+			ss = ssf.openSession();
+			cTime = ss.selectOne("testDate");//id값 ~ 한건인 경우 selectOne, 여러 건인 경우 selectList
+//			ss.commit();//insert/update/delete를 했을 때 이런식으로 commit해주면 됨
+//			System.out.println(memList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cTime;
+	}
+}
