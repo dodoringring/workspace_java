@@ -9,15 +9,16 @@
 		 <if test ='bm_no>0'>
 		 	and bm_no=#{bm_no}
 		 </if>
-		 <if test = 'cb_search!=null and cb_search.equals("bm_title")'>
+		 <if test ='bm_title>0'>
 		 	and bm_title like'%'||#{keyword}||'%'
 		 </if>
-		<if test = 'cb_search!=null and cb_search.equals("bm_content")'>
+		 <if test ='bm_title>0'>
 		 	and bm_content like'%'||#{keyword}||'%'
 		 </if>
-		 <if test = 'cb_search!=null and cb_search.equals("bm_writer")'>
+		 <if test ='bm_title>0'>
 		 	and bm_writer like'%'||#{keyword}||'%'
 		 </if>
+		 and bm_content like'%'||#{keyword}||'%'
 	</select>
 	<insert id="boardMInsert" parameterType="map">
 		INSERT INTO board_master_t(bm_no, bm_title, bm_writer, bm_reg, bm_hit, bm_group, bm_pos, bm_step)

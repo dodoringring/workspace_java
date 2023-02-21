@@ -6,18 +6,10 @@
       		  bm.bm_no, bm.bm_title, bm.bm_writer, bs.bs_file, bm.bm_hit, bm.bm_group, bm.bm_pos, bm.bm_step
  		 FROM board_master_t bm, board_sub_t bs
 		 WHERE bm.bm_no = bs.bm_no(+)
-		 <if test ='bm_no>0'>
-		 	and bm_no=#{bm_no}
+		 <if test ="bm_no>0">
+		 bm_no=#{bm_no}
 		 </if>
-		 <if test = 'cb_search!=null and cb_search.equals("bm_title")'>
-		 	and bm_title like'%'||#{keyword}||'%'
-		 </if>
-		<if test = 'cb_search!=null and cb_search.equals("bm_content")'>
-		 	and bm_content like'%'||#{keyword}||'%'
-		 </if>
-		 <if test = 'cb_search!=null and cb_search.equals("bm_writer")'>
-		 	and bm_writer like'%'||#{keyword}||'%'
-		 </if>
+		 ORDER BY bm.bm_group desc, bm.bm_step asc
 	</select>
 	<insert id="boardMInsert" parameterType="map">
 		INSERT INTO board_master_t(bm_no, bm_title, bm_writer, bm_reg, bm_hit, bm_group, bm_pos, bm_step)

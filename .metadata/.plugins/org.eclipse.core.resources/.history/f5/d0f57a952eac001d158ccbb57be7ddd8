@@ -1,9 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<script type="text/javascript">
-
-
-document.write("<h1>최고존엄도희대장군^^</h1>")
-
-
-</script>
