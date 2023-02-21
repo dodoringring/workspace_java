@@ -1,0 +1,6 @@
+[
+  {"deptno":10, "dname":"개발부","loc":"San Jose"}
+  ,{"deptno":50, "dname":"디자인부","loc":"파리"}
+  ,{"deptno":90, "dname":"미래산업본부","loc":"뉴욕"}
+
+]

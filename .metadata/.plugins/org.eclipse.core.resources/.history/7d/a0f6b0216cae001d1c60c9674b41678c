@@ -1,0 +1,7 @@
+package com.day2;
+
+import javax.servlet.http.HttpServlet;
+
+public class RequestScope extends HttpServlet {
+
+}

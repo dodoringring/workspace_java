@@ -1,0 +1,44 @@
+package com.mvc.dao;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+
+import com.util.MyBatisCommonFactory;
+
+public class MemberDao {
+	//로그4j모듈 활용해서 로그출력-날짜와 시간, 클래스명,라인번호,링크
+	//System.out.print()대신에 사용 하려고
+	Logger logger=Logger.getLogger(MemberDao.class);
+	//DAO클래스와 오라클 서버 사이에 MybatisLayer에 필요한 설정 내용 담기
+	//member.xml의 물리적인 위치와 오라클 서버의 정보가 담긴 MyBatiConfig.xml의
+	//정보를 IO로 읽어오는 코드가 포함됨
+	//마이바티스는 뭐리문을 xml문서에 따로 관리한다.-
+	//자바로 관리하는 것보다 컴파일을하지 않아도 되서 버전관리 효과적
+	MyBatisCommonFactory mcf = new MyBatisCommonFactory();
+	
+	public List <Map<String,Object>> getBookMember(){
+		Map<String, Object> rmap=null;
+		//myBatisConfig.xml문서를 통해 스캔한 오라클 서버 정보로 연결통로 확보
+		SqlSessionFactory ssf = null;
+		//위에서 SqlSessionFactory생성되면 쿼리문을 요청하는
+		SqlSession ss = null;
+		try {
+			//공통 코드에서 연결통로 확보
+			ssf = mcf.getSqlSessionFactory();
+			//연결통로로 확보로 생성된 객체로 SqlSession로딩하기
+			ss = ssf.openSession();
+//			Map<String, Object> pMap=new HashMap<>();
+//			pMap.put("mem_id", "tomato");
+//			pMap.put("mem_pw","123");
+			mList = ss.selectList("getBookMember",pMap);
+			logger.info(mList);//3건 조회
+		} catch (Exception e) {
+			e.printStackTrace();
+		}return mList;
+	}
+}
