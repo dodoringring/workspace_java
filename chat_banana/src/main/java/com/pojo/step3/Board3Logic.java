@@ -14,6 +14,16 @@ public class Board3Logic {
 		bList=boardDao.boardList(pMap);
 		return bList;
 	}
+	public int boardDelete(Map<String, Object> pMap) {
+		logger.info("boardDelete호출 : "+pMap);
+		int result=0;
+		return result;
+	}
+	public int boardUpdate(Map<String, Object> pMap) {
+		logger.info("boardUpdate호출 : "+pMap);
+		int result=0;
+		return result;
+	}
 	public int boardInsert(Map<String, Object> pMap) {
 		logger.info("boardInsert호출"+pMap);
 		int result=0;

@@ -25,7 +25,7 @@ public class HandlerMapping {
  * */
  public static Object getController(String[] upmu,HttpServletRequest req,HttpServletResponse res)
  	throws ServletException, IOException{
-//	 logger.info(upmu[0]+","+upmu[1]);
+	 logger.info(upmu[0]+","+upmu[1]);
 	 Controller3 controller=null;
 	 String path=null;
 	 Object obj=null;
@@ -69,13 +69,13 @@ public class HandlerMapping {
 			if(obj instanceof String) {//타입 알아내기 instanceof
 				 return (String)obj;
 			 }
-			else if("boardDetail".equals(upmu[1])) {//Json 포맷 나감-application/json
-				obj=controller.boardDetail(req,res);
-				if(obj instanceof ModelAndView) {//타입 알아내기 instanceof
-					 return (ModelAndView)mav;
-				 }else if(obj instanceof String) {//타입 알아내기 instanceof
-					 return (String)obj;
 				 }
+		else if("boardDetail".equals(upmu[1])) {//Json 포맷 나감-application/json
+			obj=controller.boardDetail(req,res);
+			if(obj instanceof ModelAndView) {//타입 알아내기 instanceof
+				return (ModelAndView)obj;
+			}else if(obj instanceof String) {//타입 알아내기 instanceof
+				return (String)obj;
 			 }
 		}
 	 }//end of 게시판구현

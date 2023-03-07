@@ -89,20 +89,61 @@ public class Board3Dao {
 			}
 		return result;
 	}
-	public void bStepUpdate(Map<String, Object> pMap) {
+	/*
+	 * 글 수정하기 구현
+	 * @param pMap - 사용자가 입력한 값 받아옴
+	 * 
+	 * */
+	public int boardMUpdate(Map<String, Object> pMap) {
 		int result=0;
-		Logger logger=Logger.getLogger(Board2Dao.class);
-			logger.info("boardList호출");
 			SqlSessionFactory ssf = null;
 			SqlSession ss = null;
 			
 			try {
 				ssf = mcf.getSqlSessionFactory();
 				ss = ssf.openSession();
-				result = ss.selectOne("bStepUpdate",pMap);
+				result = ss.update("boardMUpdate",pMap);
 				logger.info(result);//채번한 글 그룹번호
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+	return result;
+}
+	public void bStepUpdate(Map<String, Object> pMap) {
+		int result=0;
+			logger.info("bStepUpdate호출");
+			SqlSessionFactory ssf = null;
+			SqlSession ss = null;
+			try {
+				ssf = mcf.getSqlSessionFactory();
+				ss = ssf.openSession();
+				result = ss.update("bStepUpdate",pMap);
+				logger.info(result);//채번한 글 그룹번호
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	public int boardMDelete(Map<String, Object> pMap) {
+		int result=0;
+		logger.info("호출");
+		SqlSessionFactory ssf = null;
+		SqlSession ss = null;
+		try {
+			ssf = mcf.getSqlSessionFactory();
+			ss = ssf.openSession();
+			int bm_no=0;
+			if(pMap.get("bm_no")!=null) {
+				bm_no=Integer.parseInt(pMap.get("bm_no").toString());
+			}
+			result=ss.update("boardMDelete",bm_no);
+			if(result==1){
+				ss.commit();
+			}
+			logger.info(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

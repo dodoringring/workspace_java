@@ -54,18 +54,20 @@ public class ActionSupport extends HttpServlet {
 			}else if(obj instanceof ModelAndView) {
 				mav=(ModelAndView)obj;
 				pageMove=new String[2];
-				pageMove[0]="forward";
+				pageMove[0]="";
 				pageMove[1]=mav.getViewName();
 			}
 
 			if (pageMove != null) {
 				String path = pageMove[1];
+				//webapp바라본다
 				if ("redirect".equals(pageMove[0])) {
 					res.sendRedirect(path);
 				} else if ("forward".equals(pageMove[0])) {
 					RequestDispatcher view = req.getRequestDispatcher("/" + path + ".jsp");
 					view.forward(req, res);
 				} else {
+					logger.info("else");
 					path = pageMove[0] + "/" + pageMove[1];
 					RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/view/" + path + ".jsp");
 					view.forward(req, res);

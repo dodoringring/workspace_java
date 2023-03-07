@@ -50,7 +50,7 @@ public class Board3Controller implements Controller3 {
 		hmb.bind(pMap);
 		bList=boardLogic.boardList(pMap);
 		logger.info(bList);
-		req.setAttribute( "bList",bList);
+		req.setAttribute("bList",bList);
 		return "forward:board3/boardDetail";
 	}
 /*
@@ -60,7 +60,14 @@ public class Board3Controller implements Controller3 {
 	@Override
 	public Object boardInsert(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 		logger.info("boardInsert 호출");
-		int result = 1;
+		int result = 0;
+		//폼태그안에 사용자가 입력한 정보(bm_writer, bm_title,bm_content등등)를 받아 온다.
+		//req.getParameter("bm_writer");
+		//req.getParameter("bm_title");
+		//req.getParameter("bm_contnet");
+		//req.getParameter("?");
+		//req.getParameter("?"); 반복되는 코드 if나 while문 사용할수있다
+		
 		Map<String,Object> pMap=new HashMap<>();
 		HashMapBinder hmb=new HashMapBinder(req);
 		hmb.bind(pMap);
@@ -79,9 +86,18 @@ public class Board3Controller implements Controller3 {
 	public Object boardUpdate(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		logger.info("boardUpdate 호출");
 		int result = 0;
+		Map<String,Object> pMap=new HashMap<>();
+		HashMapBinder hmb=new HashMapBinder(req);
+		hmb.bind(pMap);
+		logger.info(pMap);
+		//result(0인데->1)값의 변화를 주는 코드 추가
+		result=boardLogic.boardUpdate(pMap);
+		String path ="";
 		if(result == 1) {
-			res.sendRedirect("boardInsertSuccess.jsp");//화면이랑 연결됨
-			return null;
+			path="redirect:/board3/boardList.st3";
+		}else {
+			path="boardInsertFail.jsp";
+			res.sendRedirect(path);
 		}
 		return "redirect:/board3/boardList.st3";
 		
@@ -91,11 +107,20 @@ public class Board3Controller implements Controller3 {
 	public Object boardDelete(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		logger.info("boardDelete 호출");
 		int result = 0;
+		Map<String,Object> pMap=new HashMap<>();
+		HashMapBinder hmb=new HashMapBinder(req);
+		hmb.bind(pMap);
+		//result=boardLogic.boardDelete(pMap);
+		logger.info(pMap);
+		String path ="";
 		if(result == 1) {
-			res.sendRedirect("boardInsertSuccess.jsp");//화면이랑 연결됨
-			return null;
+			path="redirect:/board3/boardList.st3";
+		}else {//result인경우 else타게만듦
+			path="redirect:/board3/boardInsertFail.jsp";
+			res.sendRedirect(path);
 		}
-		return "redirect:/board3/boardList.st3";
+		return path;
+	
 	}
 
 
