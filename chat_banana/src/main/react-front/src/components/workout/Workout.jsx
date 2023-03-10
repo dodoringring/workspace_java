@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 //const Workout=(props)=>{}
 //const {workout, onInclement}=props->구조분해할당
 const Workout = ({workout, onIncrement, onDecrement, onDelete}) => {//미리 구조분해 할당으로 받아옴
-  // console.log(workout);
-  // const [name, setName]=useState("default");
-  // const [count, setCount]=useState(0);
+  console.log(workout);
+  const [name, setName]=useState("default");
+  const [count, setCount]=useState(0);
   const handleIncrement=()=>{
     //이벤트 처리가 되어있지 않고 상위 컴포넌트의 함수를 호출
     //-props를 통해서 주소번지 받아옴.
@@ -23,8 +23,8 @@ const Workout = ({workout, onIncrement, onDecrement, onDelete}) => {//미리 구
   return (
     <>
     <li className='habit' key={workout.id}>
-      <span class="habit-name">{workout.name}</span>
-      <span class="habit-count">{workout.count}</span>
+      <span className="habit-name">{workout.name}</span>
+      <span className="habit-count">{workout.count}</span>
       <button className="habit-button habit-increase" onClick={handleIncrement}>
           <i className="fas fa-plus-square"></i>
       </button>

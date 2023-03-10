@@ -24,7 +24,7 @@ const Workouts = ({workouts, onIncrement, onDecrement, onDelete, onAdd}) => {
     <ul>
   
       {workouts.map((item,index)=>(/* 맵으로 꺼낸다... 요소를 하나씩 꺼낸다.for문이라고 생각하자! 인덱스는 리액트에서 넣어줌 자동 */
-        <Workout workouts={item} key={index} 
+        <Workout workout={item} key={index} 
         onIncrement={handleIncrement}
         onDecrement={handleDecrement}
         onDelete={handleDelete}
