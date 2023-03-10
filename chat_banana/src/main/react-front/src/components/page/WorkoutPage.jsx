@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate } from 'react-router'
 import Bottom from '../include/Bottom'
 import Header from '../include/Header'
 import Workouts from '../workout/Workouts'
 
 // const WorkoutPage = (props) => { 구조분해할당 전
-const WorkoutPage = ({authLogic, workouts, onIncrement, onDecrement, onDelete}) => {//미리한버전
+const WorkoutPage = ({authLogic, workouts, onIncrement, onDecrement, onDelete, onAdd}) => {//미리한버전
   // const {authLogic, workouts, onIncrement}=props 구조분해할당
 	const navigate = useNavigate()
-	let { userId } = useParams()
-	console.log(userId)
+	// let { userId } = useParams()
+	// console.log(userId)
 	const onLogout = () => {
 		console.log('workoutPage onLogout 호출')
 		authLogic.logout()
@@ -31,6 +31,7 @@ const WorkoutPage = ({authLogic, workouts, onIncrement, onDecrement, onDelete}) 
     onDelete(item)
   }
   const handleAdd=(name)=>{
+    //부모에 정의된 함수 호출하기-파라미터값은 AddForm에서 inputRef로 설정된 값 가져오기
     onAdd(name)
   }
 
@@ -48,6 +49,7 @@ const WorkoutPage = ({authLogic, workouts, onIncrement, onDecrement, onDelete}) 
       onIncrement={handleIncrement}
       onDecrement={handleDecrement}
       onDelete={handleDelete}
+      onAdd={handleAdd}
     />{/* 자손 컴포넌트 호출 prop으로 넘겨줌*/}
     <Bottom/>
   </>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
+import React, { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router'
 import Bottom from '../include/Bottom'
 import Header from '../include/Header'
 

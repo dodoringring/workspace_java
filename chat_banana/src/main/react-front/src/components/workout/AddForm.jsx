@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddForm = () => {
+const AddForm = (props) => {
   //createRef는 브라우저에서 DOM요소에 접근해서 그 요소에 값이나 클릭이벤트를 등록했던것처럼
   //리액트는 바로 Dom요소에 접근하지않고 필요할때 createREf를 이용해서
   //멤버 변수를 정의 한 다음 원하는 해당하는 컴포넌트에 ref로 연결하면 된다.

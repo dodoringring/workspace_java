@@ -8,7 +8,7 @@ import HomePage from './components/page/HomePage';
 import WorkoutPage from './components/page/WorkoutPage';
 import YoutubePage from './components/page/YoutubePage';
 import FireDeptPage from './components/page/FireDeptPage';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useParams} from 'react';
 //index.js에서 브라우저 라우터로 감싸진 App태그 속성값으로 넘어온 주소번지를 받는다.
 const App=({authLogic})=> {
   console.log('App호출');
@@ -28,7 +28,7 @@ const App=({authLogic})=> {
   */
  useEffect(()=>{
   console.log('effect 호출');
- })
+ },[])
   const handleIncrement=(item)=>{
     const index=items.indexOf(item);
     items[index].count+=1;
@@ -42,7 +42,15 @@ const App=({authLogic})=> {
   }
   const handleDelete=(item)=>{
     console.log(`handleDelete ${item.name}`)
-    const workputs=items.filter(workout=>workout.id!=item.id)
+    const workouts=items.filter(workout=>workout.id!=item.id)
+    setItems([...workouts])
+  }
+  const handleAdd=(name)=>{
+    //AddForm화면에서 사용자가 입력한 운동이름을 받아온다
+    //세번째 파라미터는 0으로 초기화
+    //스프레드 연산자를 활용하여 기존 배열에 한개의 객체를 추가하는 코드
+    const workouts=[...items, {id:Date.now(),name,count:0}]
+    //상태훅에 반영-새로운 주소번지가 채번되도록 처리해야함
     setItems([...workouts])
   }
   //사용자 정의 컴포넌트에서 return다음에 오는 코드가 element의 집합이다.
