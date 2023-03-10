@@ -53,8 +53,8 @@
 		//$('#d_boardUpd').dialog('refresh', '');
 	}
 	boardUpd=()=>{
-		$(#"uf_board").attr("action","/board3/boardUpdate.st3");
-		$(#"uf_board").submit();
+		$("#uf_board").attr("action","/board3/boardUpdate.st3");
+		$("#uf_board").submit();
 	}
 	//댓글쓰기
 	function repleForm(){
@@ -101,7 +101,7 @@
 		 $('#d_boardDel').dialog('close');
 	}
 	function boardList(){
-		location.href="/board/boardList.st3";
+		location.href="/board3/boardList.st3";
 	}
 </script>
 </head>

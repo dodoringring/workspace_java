@@ -10,13 +10,11 @@ public class JDBCTemplate {
 
 	public static Connection getConnection() {
 		Connection con = null;
-		Properties prop = new Properties();
+		
 		try {
-			String currentPath = JDBCTemplate.class.getResource("./").getPath();
-			prop.load(new BufferedReader(new FileReader(currentPath + "driver.properties")));
-			Class.forName(prop.getProperty("driver"));
-			con = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("user"),
-					prop.getProperty("pwd"));
+			Class.forName(" oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection( "jdbc:oracle:thin:@128.168.25.30:1521:XE", "student",
+					"student");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,7 +50,7 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void commit(Connection con) {
 	 try {
 	 if (con != null && !con.isClosed()) { con.commit(); }
@@ -69,6 +67,7 @@ public class JDBCTemplate {
 		}
 	}
 	public static void main(String[] args) {
-	
+	Connection con = getConnection();
+	System.out.println(con);
 }
 }

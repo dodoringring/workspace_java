@@ -32,7 +32,7 @@ public class Board3Dao {
 		}return bList;
 	}
 	public int boardInsert(Map<String, Object> pMap) {
-		logger.info("boardInsert호출");
+		logger.info("boardInsert호출"+pMap);
 		int result=0;
 		SqlSessionFactory ssf = null;
 		SqlSession ss = null;
@@ -52,6 +52,28 @@ public class Board3Dao {
 		}
 		return result;
 	}
+	public int boardSInsert(Map<String, Object> pMap) {
+		logger.info("boardSInsert호출"+pMap);
+		int result=0;
+		SqlSessionFactory ssf = null;
+		SqlSession ss = null;
+		
+		try {
+			ssf = mcf.getSqlSessionFactory();
+			ss = ssf.openSession();
+			//insert이지만 update로 하는 이유는 리턴타입이 Object이기 때문이다.
+			//메소드 이름은 상관 없이 해당 쿼리문을 id로 찾기 때문이다.
+			result = ss.update("boardSInsert",pMap);
+			logger.info(result);
+			if(result==1){
+				ss.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	public int getBGroup() {
 		int result=0;
 		Logger logger=Logger.getLogger(Board2Dao.class);
@@ -119,6 +141,31 @@ public class Board3Dao {
 				ss = ssf.openSession();
 				result = ss.update("bStepUpdate",pMap);
 				logger.info(result);//채번한 글 그룹번호
+				if(result==1){
+					ss.commit();
+					}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	/*글 조회수 수정하기
+	 * @param int - 글 번호 가져오기
+	 * */
+	public void hitCount(int bm_no) {
+		int result=0;
+			logger.info("hitCount호출");
+			SqlSessionFactory ssf = null;
+			SqlSession ss = null;
+			try {
+				ssf = mcf.getSqlSessionFactory();
+				ss = ssf.openSession();
+				result = ss.update("hitCount",bm_no);
+				logger.info(result);//채번한 글 그룹번호
+				if(result==1){
+					ss.commit();
+					}
+				logger.info(result);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

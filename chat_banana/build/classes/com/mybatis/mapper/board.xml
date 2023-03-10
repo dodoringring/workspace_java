@@ -9,7 +9,7 @@
 		       bm.bm_writer,
 		       bm.bm_content,
 		       bm.bm_pw,
-		       bs.bs_file,
+		      NVL(bs.bs_file,'')bs_file,
 		       bm.bm_hit,
 		       bm.bm_group,		       
 		       bm.bm_pos,
@@ -60,6 +60,7 @@
      #{bm_group}, #{bm_pos}, #{bm_step})
 	</insert>
 	
+	
 		<!-- board Sub에 인서트 -->
 		<!-- 첨부파일을 추가하는 경우에만 실행됨, 없으면 해당없음
 				 글번호는 새글쓰기에서 결정된 값이 대입되어야함, 새로채번하면 안됨! -->
@@ -68,6 +69,12 @@
 		board_sub_t(bm_no, bs_seq, bs_file, bs_size)
 		VALUES(#{bm_no}, 1, #{bs_file}, #{bs_size})
 	</insert>
+		<update id="hitCount" parameterType="int">
+		update BOARD_MASTER_T 
+		    set bm_hit=bm_hit+1
+		    where bm_no=#{value}
+		</update>
+		
 		
 		<!-- board Master에 Step 업데이트 -->
 		<!-- 내가 쓰는 댓글 뒤에 댓글이 존재하는 경우만 실행됨

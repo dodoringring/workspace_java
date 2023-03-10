@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+
 
 const Header = ({userId,onLogout}) => {
   // const {userId,onLogout}=props;
@@ -11,23 +13,15 @@ const Header = ({userId,onLogout}) => {
     <React.Fragment>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home">JavaCamp</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/board" className="nav-link">게시판</Link>
+              <Link to="/workout" className="nav-link">홈트</Link>
+              <Link to="/hackernews" className="nav-link">해커뉴스</Link>
+              <Link to="/youtube" className="nav-link">유튜브</Link>
             </Nav>
             {onLogout && <Button variant='primary' onClick={onLogout}>Logout</Button>}
           </Navbar.Collapse>

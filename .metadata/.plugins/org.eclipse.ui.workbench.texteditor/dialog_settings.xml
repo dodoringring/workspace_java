@@ -6,21 +6,32 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="board"/>
 		<list key="findhistory">
+			<item value="board/"/>
+			<item value="board"/>
+			<item value="boardList"/>
+			<item value="목록"/>
+			<item value="key"/>
+			<item value="repleForm"/>
+			<item value="a"/>
+			<item value="uf_board"/>
+			<item value="dlg_boardAdd"/>
+			<item value="댓글"/>
+			<item value="bStepUpdate"/>
+			<item value="id"/>
 			<item value="cb_"/>
 			<item value="b_title"/>
 			<item value="b_"/>
-			<item value="pj"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1040"/>
-		<item key="DIALOG_Y_ORIGIN" value="578"/>
+		<item key="DIALOG_X_ORIGIN" value="879"/>
+		<item key="DIALOG_Y_ORIGIN" value="492"/>
 		<item key="DIALOG_WIDTH" value="288"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_HEIGHT" value="388"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

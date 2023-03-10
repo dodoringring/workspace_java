@@ -27,7 +27,7 @@ class AuthLogic {
   onAuthChange(onUserChanged) {
     // 사용자가 바뀌었을 때 콜백함수를 받아서
     this.firebaseAuth.onAuthStateChanged((user) => {
-      //사용자가 바뀔 때마다
+      //사용자가 바뀔 때마다 구글에서 응답을 주는 컨셉
       onUserChanged(user);
     });
   }
