@@ -7,6 +7,7 @@ import AuthLogic from "./service/authLogic";
 import firebaseApp from "./service/firebase";
 import "bootstrap/dist/css/bootstrap.css";
 import '@fortawesome/fontawesome-free/js/all.js'
+import 'react-quill/dist/quill.snow.css';/* 퀼 사용하려면 index.js에 넣어야한다. */
 //import SampleApp from "./components/SampleApp";
 
 //공통코드->service>authLogic.js->import외부 js재사용 가능하다.->export default 클래스명->

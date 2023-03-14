@@ -5,7 +5,7 @@
 <%
 //요청이 URL이 바뀌지 않아요 - forward
 	List<Map<String,Object>> boardList = 
-	(List<Map<String,Object>>)request.getAttribute("boardList");
+	(List<Map<String,Object>>)request.getAttribute("bList");//null출력 이름을 맞춰줘야...
 	Gson g = new Gson();
 	String imsi = g.toJson(boardList);
 	out.print(imsi);

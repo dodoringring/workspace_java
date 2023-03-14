@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.BoardMapper">
+	<!-- 게시글 삭제 -->
+	<delete id="boardMDelete" parameterType="int">
+		DELETE FROM board_master_t
+			WHERE bm_no = #{value}
+	</delete>
+	
 	<!-- 게시글목록 가져오는 쿼리문 -->
 	<select id="boardList" parameterType="java.util.HashMap"
 		resultType="map">
@@ -9,7 +15,7 @@
 		       bm.bm_writer,
 		       bm.bm_content,
 		       bm.bm_pw,
-		      NVL(bs.bs_file,'')bs_file,
+		       NVL(bs.bs_file, ' ') bs_file,
 		       bm.bm_hit,
 		       bm.bm_group,		       
 		       bm.bm_pos,
@@ -60,7 +66,6 @@
      #{bm_group}, #{bm_pos}, #{bm_step})
 	</insert>
 	
-	
 		<!-- board Sub에 인서트 -->
 		<!-- 첨부파일을 추가하는 경우에만 실행됨, 없으면 해당없음
 				 글번호는 새글쓰기에서 결정된 값이 대입되어야함, 새로채번하면 안됨! -->
@@ -69,15 +74,26 @@
 		board_sub_t(bm_no, bs_seq, bs_file, bs_size)
 		VALUES(#{bm_no}, 1, #{bs_file}, #{bs_size})
 	</insert>
-		<update id="hitCount" parameterType="int">
-		update BOARD_MASTER_T 
-		    set bm_hit=bm_hit+1
-		    where bm_no=#{value}
-		</update>
 		
-		
-		<!-- board Master에 Step 업데이트 -->
-		<!-- 내가 쓰는 댓글 뒤에 댓글이 존재하는 경우만 실행됨
+	<!-- board Master 내용 수정하기 -->
+	<update id="boardMUpdate" parameterType="map">
+		UPDATE board_master_t
+		SET bm_title = #{bm_title}
+		<if test="bm_writer != null and bm_writer.length() != 0">
+		    ,bm_writer = #{bm_writer}
+		</if>
+		<if test="bm_content != null and bm_content.length() != 0">
+		    ,bm_content = #{bm_content}
+		</if>
+		<if test="bm_pw != null and bm_pw.length() != 0">
+		    ,bm_pw = #{bm_pw}
+		</if>
+				,bm_reg = TO_CHAR(sysdate, 'YYYY-MM-DD')
+		WHERE bm_no = #{bm_no}
+	</update>
+	
+	<!-- board Master에 Step 업데이트 -->
+	<!-- 내가 쓰는 댓글 뒤에 댓글이 존재하는 경우만 실행됨
 				 조건절에 들어오는 그룹번호와 step은 상세보기 화면에서 가져온 값이 대입됨 -->
 	<update id="bStepUpdate" parameterType="map">
 		UPDATE board_master_t
@@ -86,21 +102,11 @@
 		AND bm_step > #{bm_step}
 	</update>
 	
-	<!-- board Master 내용 수정하기 -->
-	<update id="boardMUpdate" parameterType="map">
-		UPDATE board_master_t
-		SET bm_title = #{bm_title}
-		<if test="bm_writer != null">
-		    ,bm_writer = #{bm_writer}
-		</if>
-		<if test="bm_content != null">
-		    ,bm_content = #{bm_content}
-		</if>
-		<if test="bm_pw != null">
-		    ,bm_pw = #{bm_pw}
-		</if>
-				,bm_reg = TO_CHAR(sysdate, 'YYYY-MM-DD')
-		WHERE bm_no = #{bm_no}
+	<!-- board Master에 Hit 업데이트 -->
+	<update id="hitCount" parameterType="int">
+		UPDATE BOARD_MASTER_T
+		SET bm_hit = bm_hit + 1
+		WHERE bm_no =#{value}
 	</update>
 	
 	<!-- bm_no 채번 -->

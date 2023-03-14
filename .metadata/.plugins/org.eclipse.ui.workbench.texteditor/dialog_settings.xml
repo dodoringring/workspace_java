@@ -6,9 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="board"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
 			<item value="board/"/>
+			<item value="Override"/>
+			<item value="\\"/>
+			<item value="//"/>
 			<item value="board"/>
 			<item value="boardList"/>
 			<item value="목록"/>
@@ -20,9 +23,6 @@
 			<item value="댓글"/>
 			<item value="bStepUpdate"/>
 			<item value="id"/>
-			<item value="cb_"/>
-			<item value="b_title"/>
-			<item value="b_"/>
 		</list>
 		<list key="replacehistory">
 		</list>

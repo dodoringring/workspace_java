@@ -9,6 +9,9 @@ import WorkoutPage from './components/page/WorkoutPage';
 import YoutubePage from './components/page/YoutubePage';
 import FireDeptPage from './components/page/FireDeptPage';
 import { useEffect, useState, useParams} from 'react';
+import BoardPage from './components/page/BoardPage';
+import BoardDetail from './components/board/BoardDetail';
+import BoardWriteForm from './components/board/BoardWriteForm';
 //index.js에서 브라우저 라우터로 감싸진 App태그 속성값으로 넘어온 주소번지를 받는다.
 const App=({authLogic})=> {
   console.log('App호출');
@@ -58,18 +61,16 @@ const App=({authLogic})=> {
   return (
   <>
   <Routes>
-    <Route path='/' exact={true} element={<LoginPage authLogic={authLogic}/>}/>
+  <Route path='/' exact={true} element={<LoginPage authLogic={authLogic}/>}/>
     <Route path='/home/:userId' exact={true} element={<HomePage authLogic={authLogic}/>}/>
-    <Route path='/board' exact={true} element={<DeptPage authLogic={authLogic}/>}/>
-    <Route path='/workout' exact={true} element={<WorkoutPage authLogic={authLogic} workouts={items} 
-    onIncrement={handleIncrement} 
-    onDecrement={handleDecrement}
-    onDelete={handleDelete}
-    />}/>
+    <Route path='/board' exact={true} element={<BoardPage authLogic={authLogic}/>}/>
+    <Route path='/board/write/*' element={<BoardWriteForm/>}/> {/* exact는 백프로 일치할때만 사용가능 */}
+    <Route path='/boarddetail/:bm_no' exact={true} element={<BoardDetail/>}/>
+    <Route path='/workout' exact={true} element={<WorkoutPage authLogic={authLogic} workouts={items} onIncrement={handleIncrement} onDecrement={handleDecrement} onDelete={handleDelete} onAdd={handleAdd} />}/>
     <Route path='/hackernews' exact={true} element={<HackerNewsPage authLogic={authLogic}/>}/>
     <Route path='/youtube' exact={true} element={<YoutubePage authLogic={authLogic}/>}/>
     <Route path='/dept/:id' exact={true} element={<FireDeptPage authLogic={authLogic}/>}/>
-    <Route path='/emp' exact={true} element={<EmpPage/>}/>
+    <Route path='/emp' exact={true} element={<EmpPage authLogic={authLogic}/>}/>
   </Routes>
   </>
   );

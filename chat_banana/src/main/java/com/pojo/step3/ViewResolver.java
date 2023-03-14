@@ -17,7 +17,12 @@ public class ViewResolver {
 	{
 	
 			if (pageMove != null) {
-				String path = pageMove[1];
+				String path = "";
+				if(pageMove[1] == null) {
+					return;
+				} else {
+					path = pageMove[1];
+				}
 				//webapp바라본다
 				if ("redirect".equals(pageMove[0])) {
 					res.sendRedirect(path);
