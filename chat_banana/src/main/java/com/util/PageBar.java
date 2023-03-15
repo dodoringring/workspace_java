@@ -62,7 +62,7 @@ public class PageBar {
 			//pagePath뒤에 이동할 페이지 번호를 붙여서 호출 해야함.
 			if(nowBlock > 0 ) {                                    //(1-1)*2+(2-1)=1
 				pageLink.append("<a href='"+pagePath+"?nowPage="+((nowBlock-1)*pagePerBlock+(pagePerBlock-1))+"'>");
-				pageLink.append("<img border=0 src='/images/bu_a.gif'>");
+				pageLink.append("<img border=0 src='/images/bu_a.gif'>");//왼쪽 화살표
 				pageLink.append("</a>&nbsp;&nbsp;");
 			}
 			for(int i=0;i<pagePerBlock;i++) {
@@ -73,17 +73,17 @@ public class PageBar {
 				//그렇지 않을 때를 나누어 처리해야 함.
 				else {
 					pageLink.append("<a href='"+pagePath+"?nowPage="+((nowBlock*pagePerBlock)+i)+"'>"+((nowBlock*pagePerBlock)+i+1)+"</a>&nbsp;");
-					
+					//숫자 마우스를 올리면 링크가 걸리도록 a태그
 				}
 				//모든 경우에 pagePerBlock만큼 반복되지 않으므로 break처리해야 함.
 				//주의할 것.
-				if((nowBlock*pagePerBlock)+i+1==totalPage) break;
+				if((nowBlock*pagePerBlock)+i+1==totalPage) break;//break잘 챙기기...무한루프에 빠지지 않도록
 			}
 			//현재 블록에서 다음 블록이 존재할 경우 이미지 추가하고 페이지 이동할 수 있도록
 			//a태그 활용하여 링크 처리하기
 			if(totalBlock > nowBlock+1) {
 				pageLink.append("&nbsp;&nbsp;<a href='"+pagePath+"?nowPage="+((nowBlock+1)*pagePerBlock)+"'>");
-				pageLink.append("<img border=0 src='/images/bu_b.gif'>");
+				pageLink.append("<img border=0 src='/images/bu_b.gif'>");//오른쪽 화살표
 				pageLink.append("</a>");	
 			}
 		}

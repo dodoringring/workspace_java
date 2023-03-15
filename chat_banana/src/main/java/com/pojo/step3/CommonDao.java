@@ -23,7 +23,7 @@ public class CommonDao {
 	try {
 		ssf = mcf.getSqlSessionFactory();
 		ss = ssf.openSession();
-		pMap.put("dong", "역삼");
+//		pMap.put("dong", "역삼");
 		zList = ss.selectList("zipcodeList",pMap);
 		logger.info(zList);
 	} catch (Exception e) {

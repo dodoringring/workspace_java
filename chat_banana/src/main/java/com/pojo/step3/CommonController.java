@@ -27,7 +27,8 @@ public class CommonController implements Controller3 {
 		hmb.bind(pMap);
 		zList = commonLogic.zipcodeList(pMap);
 		ModelAndView mav = new ModelAndView(req);// redirect/forward ~ webapp에 배포 ////mav ~ WEB-INF에 배포
-		mav.setViewName("common/zipcodeList");
+		//WEB-INF/views/common.jsonZipcodeList.jsp
+		mav.setViewName("common/jsonZipcodeList");
 		mav.addObject("zList", zList);
 		return mav;
 	}
