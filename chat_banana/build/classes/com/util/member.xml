@@ -3,7 +3,10 @@
 <mapper namespace="MemberMapper">
 
 		<select id="memberList" parameterType="java.util.HashMap" resultType="map">
-		SELECT mem_id, mem_num, mem_name from member
+		select mem_id,mem_name
+			from book_member
+			where mem_id=#{mem_id}
+			and mem_pw=#{mem_pw}
 		<where>
 			<if test='mem_num > 0'>
 				mem_num = #{mem_num}
@@ -19,4 +22,7 @@
 		</where>
 		ORDER BY mem_num desc
 	</select>
+	<select id="Login" parameterType="java.util.HashMap" resultType="map"><!-- map ~ mybatis 예약어 지원 축약가능 -->
+		SELECT mem_id, mem_name FROM BOOK_MEMBER WHERE mem_id = #{mem_id} AND mem_pw = #{mem_pw}    
+	</select>	
 </mapper>

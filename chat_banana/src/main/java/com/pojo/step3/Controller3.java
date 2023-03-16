@@ -12,6 +12,7 @@ import com.pojo.step2.ActionServlet;
 
 public interface Controller3 {
 	
+	public Object login(HttpServletRequest req, HttpServletResponse res);
 	public Object zipcodeList(HttpServletRequest req, HttpServletResponse res);
 	public Object boardList(HttpServletRequest req, HttpServletResponse res);
 	public Object boardDetail(HttpServletRequest req, HttpServletResponse res);

@@ -348,5 +348,10 @@ public Object zipcodeList(HttpServletRequest req, HttpServletResponse res) {
 	// TODO Auto-generated method stub
 	return null;
 }
+@Override
+public Object login(HttpServletRequest req, HttpServletResponse res) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }//end of Board3Controller

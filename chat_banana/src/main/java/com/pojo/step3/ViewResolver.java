@@ -15,7 +15,7 @@ public class ViewResolver {
 	public ViewResolver(HttpServletRequest req, HttpServletResponse res, String[] pageMove)
 	throws ServletException, IOException
 	{
-	
+		logger.info("pageMove :"+pageMove);
 			if (pageMove != null) {
 				String path = "";
 				if(pageMove[1] == null) {
@@ -31,7 +31,12 @@ public class ViewResolver {
 					view.forward(req, res);
 				} else {
 					logger.info("else");
-					path = pageMove[0] + "/" + pageMove[1];
+					if(pageMove[0]!=null&&pageMove[0].length()>0) {
+						path = pageMove[0] + "/" + pageMove[1];						
+					}
+					else {
+						path=pageMove[1];//member/cindex
+					}
 					RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/view/" + path + ".jsp");
 					view.forward(req, res);
 				}
