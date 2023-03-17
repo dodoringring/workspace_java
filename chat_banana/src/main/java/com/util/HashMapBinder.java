@@ -85,7 +85,7 @@ public void bind(Map<String,Object> pMap) {//이 객체는 누가 주입해주�
 	Enumeration<String> en = req.getParameterNames();
 	while(en.hasMoreElements()) {
 		String key=en.nextElement();
-		logger.info("key : "+key);
+		logger.info("key, val : "+key+req.getParameterNames());
 		pMap.put(key, req.getParameter(key));
 		}
 	}

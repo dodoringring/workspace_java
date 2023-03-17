@@ -28,9 +28,9 @@
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.util.HashMapBinder"/>
-    <fullyQualifiedTypeName name="com.pojo.step3.MemberDao"/>
     <fullyQualifiedTypeName name="jdk.jfr.internal.Logger"/>
     <fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
     <fullyQualifiedTypeName name="com.pojo.step3.MemberLogic"/>
     <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+    <fullyQualifiedTypeName name="com.pojo.step3.MemberDao"/>
 </qualifiedTypeNameHistroy>
